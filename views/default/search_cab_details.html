@@ -1,0 +1,27 @@
+{{extend 'layout.html'}}
+<h1>This is the default/search_cab_details.html template</h1>
+{{=source_pt}}
+{{=destination_pt}}
+{{=seats_required}}
+{{=date_of_travel}}
+{{=time_of_travel}}
+{{=cab_list}}
+<table border='1'>
+{{for item in cab_list:}}
+<tr>
+<td>{{=item.type_of_car}}</td>
+<td>{{=item.time_of_travel}}</td>
+<td>{{=item.seats_available}}</td>
+<td>{{=item.preference}}</td>
+<td>
+    <input type="submit" id="click" value="View"
+onclick = 'window.location="{{=URL('default', 'book_cab', vars={'travel_id':item.id,                                                                                                                       'source_pt':source_pt,                                                                                                            'destination_pt':destination_pt,
+                                                       'seats_required':seats_required,
+                                                       'date_of_travel':date_of_travel,
+                                                       'time_of_travel':time_of_travel,
+                                                         'seats_available':item.seats_available})}}";'>
+
+            </td>
+</tr>
+{{pass}}
+</table>
