@@ -1,0 +1,39 @@
+{{extend 'layout.html'}}
+<h1>Cabs from {{=source_pt}} to {{=destination_pt}}</h1>
+<!-- {{=source_pt}}
+{{=destination_pt}}
+{{=seats_required}}
+{{=date_of_travel}}
+{{=time_of_travel}} -->
+<!-- {{=cab_list}} -->
+<table border='1'>
+<tr>
+<th align='center'>Type of Car</th>
+<th align='center'>Time of travel</th>
+<th align='center'>Seats available</th>
+<th align='center'>Gender Preference</th>
+<th align='center'>Distance between</th>
+<th align='center'>Fare</th>
+<th align='center'>Click to Book</th>
+
+</tr>
+{{for item in cab_list:}}
+<tr>
+<td align='center'>{{=item.type_of_car}}</td>
+<td align='center'>{{=item.time_of_travel}}</td>
+<td align='center'>{{=item.seats_available}}</td>
+<td align='center'>{{=item.preference}}</td>
+<td align='center'>{{=distance_btw}}</td>
+<td align='center'>{{=fare}}</td>
+<td align='center'>
+    <input type="submit" id="click" value="Book"
+onclick = 'window.location="{{=URL('default', 'book_cab', vars={'travel_id':item.id,                                                                                                                       'source_pt':source_pt,                                                                                                            'destination_pt':destination_pt,
+                                                       'seats_required':seats_required,
+                                                       'date_of_travel':date_of_travel,
+                                                       'time_of_travel':time_of_travel,
+                                                         'seats_available':item.seats_available})}}";'>
+
+            </td>
+</tr>
+{{pass}}
+</table>
