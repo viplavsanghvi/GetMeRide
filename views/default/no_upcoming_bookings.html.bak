@@ -1,0 +1,2 @@
+{{extend 'layout.html'}}
+<h1>No upcoming bookings,please click on 'Take a Cab' to book a cab</h1>

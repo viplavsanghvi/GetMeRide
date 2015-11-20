@@ -63,7 +63,7 @@ auth.settings.extra_fields['auth_user']=[
   Field('address','string',requires=IS_NOT_EMPTY(error_message=auth.messages.is_empty)),
   Field('dob','date',requires=IS_NOT_EMPTY()),  
   Field('gender',requires=IS_IN_SET(['Male', 'Female'])),
-  Field('wallet_amount','integer',writable=False)]
+  Field('wallet_amount','integer',writable=False,default=0)]
 
 
 auth.define_tables(username=False, signature=False)
@@ -78,9 +78,12 @@ db.define_table('share_cab_details',
                 Field('destination_pt','string'),
                 Field('date_of_travel','date'),
                 Field('time_of_travel','time'),
+                Field('vehicle_no','string'),
                 Field('type_of_car','string'),
                 Field('seats_available','integer'),
                 Field('preference','string'),
+                Field('status',requires=IS_IN_SET(['Successfull', 'Cancelled']),default='Successfull'),
+                Field('traffic_wt',requires=IS_IN_SET(['YES', 'NO']),default='NO'),
                 Field('path_btw','list:string'))
 
 db.define_table('shared_cab_details',
@@ -90,7 +93,14 @@ db.define_table('shared_cab_details',
                 Field('destination_pt','string'),
                 Field('seats_booked','integer'),
                 Field('date_of_travel','date'),
-                Field('time_of_travel','time'))
+                Field('time_of_travel','time'),
+                Field('fare','float'),
+                Field('status',requires=IS_IN_SET(['Successfull', 'Cancelled']),default='Successfull'))
+
+db.define_table('peak_time',
+                Field('from_time','time'),
+                Field('to_time','time'))
+
 ## configure email
 mail = auth.settings.mailer
 mail.settings.server = 'logging' if request.is_local else myconf.take('smtp.server')

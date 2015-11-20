@@ -34,8 +34,11 @@
 {{elif request.args(0)=='change_password':}}
     web2py_validate_entropy(jQuery('#no_table_new_password'),100);
 {{elif request.args(0)=='profile':}}
+    alert("oye");
     document.getElementById("submit_record__row").firstChild.className="col-sm-14 col-sm-offset-1";
 {{pass}}
 </script>
 
+<input type='button' value='View Previous Bookings' onclick = 'window.location="{{=URL('default', 'previous_bookings')}}";'>
+<input type='button' value='View Upcoming Bookings' onclick = 'window.location="{{=URL('default', 'upcoming_bookings')}}";'>
 {{end page_js}}
