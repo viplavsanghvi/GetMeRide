@@ -58,6 +58,7 @@ service = Service()
 plugins = PluginManager()
 
 ## create all tables needed by auth if not custom tables
+<<<<<<< HEAD
 auth.settings.extra_fields['auth_user']=[
   Field('contact_no',requires=IS_NOT_EMPTY(error_message=auth.messages.is_empty)),
   Field('address','string',requires=IS_NOT_EMPTY(error_message=auth.messages.is_empty)),
@@ -65,6 +66,8 @@ auth.settings.extra_fields['auth_user']=[
   Field('wallet_amount','integer',writable=False)]
 
 
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 auth.define_tables(username=False, signature=False)
 db.define_table('routes',Field('source_pt','string'),
                 Field('destination_pt','string'),
@@ -87,7 +90,10 @@ db.define_table('shared_cab_details',
                 Field('user_id','string'),
                 Field('source_pt','string'),
                 Field('destination_pt','string'),
+<<<<<<< HEAD
                 Field('seats_booked','integer'),
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
                 Field('date_of_travel','date'),
                 Field('time_of_travel','time'))
 ## configure email

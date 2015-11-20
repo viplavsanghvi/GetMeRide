@@ -7,6 +7,7 @@
 ## - user is required for authentication and authorization
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
+<<<<<<< HEAD
 import networkx as nx
 locations={}
 points=[]
@@ -32,13 +33,20 @@ for row in rows:
 
 
 
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 
 #########################################################################
 ##   add_routes() function allows Admin to add new routes
 #########################################################################
 
+<<<<<<< HEAD
 
 @auth.requires_login()
+=======
+import networkx as nx
+
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 def add_routes():
     form_add_route=SQLFORM.factory(Field('source_pt',requires=IS_NOT_EMPTY()),
                                    Field('destination_pt',requires=IS_NOT_EMPTY()),
@@ -58,6 +66,7 @@ def add_routes():
 #####################################################################
 ## share_a_cab() function allows a user to post details of cab to be shared
 #####################################################################
+<<<<<<< HEAD
 @auth.requires_login()
 def share_a_cab():
     g=nx.Graph()
@@ -87,6 +96,28 @@ def share_a_cab():
 #     print points
     if form_share_a_cab.process().accepted:
         ip_user_id=auth.user.email
+=======
+def share_a_cab():
+    rows=db().select(db.routes.ALL)
+    g=nx.Graph()
+    for row in rows:
+        a=str(row.source_pt)
+        b=str(row.destination_pt)
+        c=float(row.dist_btw)
+        g.add_edge(a,b,weight=c)
+        
+    form_share_a_cab=SQLFORM.factory(Field('user_id',requires=IS_NOT_EMPTY()),
+                                     Field('source_pt',requires=IS_NOT_EMPTY()),
+                                     Field('destination_pt',requires=IS_NOT_EMPTY()),
+                                     Field('date_of_travel','date',requires=IS_NOT_EMPTY()),
+                                     Field('time_of_travel','time',requires=IS_NOT_EMPTY()),
+                                     Field('type_of_car',requires=IS_NOT_EMPTY()),
+                                     Field('seats_available','integer',requires=IS_NOT_EMPTY()),
+                                     Field('preference',requires=IS_NOT_EMPTY()))
+    
+    if form_share_a_cab.process().accepted:
+        ip_user_id=form_share_a_cab.vars.user_id
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
         ip_source_pt=form_share_a_cab.vars.source_pt
         ip_destination_pt=form_share_a_cab.vars.destination_pt
         ip_date_of_travel=form_share_a_cab.vars.date_of_travel
@@ -94,7 +125,10 @@ def share_a_cab():
         ip_type_of_car=form_share_a_cab.vars.type_of_car
         ip_seats_available=form_share_a_cab.vars.seats_available
         ip_preference=form_share_a_cab.vars.preference
+<<<<<<< HEAD
 #         user_id=
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
         ip_shortest_path_btw=nx.shortest_path(g,ip_source_pt,ip_destination_pt,weight='weight')
         id1=db.share_cab_details.insert(user_id=ip_user_id,
                                         source_pt=ip_source_pt,
@@ -107,6 +141,7 @@ def share_a_cab():
 ##############################################################################################################
 ## 
 ##############################################################################################################
+<<<<<<< HEAD
 @auth.requires_login()
 def search_cab():
     
@@ -114,6 +149,12 @@ def search_cab():
                                      Field('destination_pt',requires=IS_IN_SET(points)),
                                      Field('seats_required','integer',
                                            requires=IS_IN_SET([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])),
+=======
+def search_cab():
+    form_search_cab=SQLFORM.factory( Field('source_pt',requires=IS_NOT_EMPTY()),
+                                     Field('destination_pt',requires=IS_NOT_EMPTY()),
+                                     Field('seats_required','integer',requires=IS_NOT_EMPTY()),
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
                                      Field('date_of_travel','date',requires=IS_NOT_EMPTY()),
                                      Field('time_of_travel','time',requires=IS_NOT_EMPTY()))
     if form_search_cab.process().accepted:
@@ -124,17 +165,24 @@ def search_cab():
                                                'time_of_travel':form_search_cab.vars.time_of_travel}))
         
     return locals()
+<<<<<<< HEAD
 @auth.requires_login()
 def search_cab_details():
     g=nx.Graph()
     g=unweighted_g
+=======
+def search_cab_details():
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
     source_pt=request.vars.source_pt
     destination_pt=request.vars.destination_pt
     seats_required=int(request.vars.seats_required)
     date_of_travel=request.vars.date_of_travel
     time_of_travel=request.vars.time_of_travel
+<<<<<<< HEAD
     distance_btw=nx.shortest_path(g,source_pt,destination_pt,weight='weight')
     fare=distance_btw*14
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
     rows=db(db.share_cab_details).select()
     cab_list=[]
     for row in rows:
@@ -148,8 +196,11 @@ def search_cab_details():
                         print 'False'
     return locals()
 
+<<<<<<< HEAD
 
 @auth.requires_login()
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 def book_cab():
     travel_id=request.vars.travel_id
     source_pt=request.vars.source_pt
@@ -157,8 +208,12 @@ def book_cab():
     seats_required=request.vars.seats_required
     date_of_travel=request.vars.date_of_travel
     time_of_travel=request.vars.time_of_travel
+<<<<<<< HEAD
     user_id=auth.user.email
     id1=db.shared_cab_details.insert(user_id=user_id,
+=======
+    id1=db.shared_cab_details.insert(user_id='abc',
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
                                         travel_id=travel_id,
                                         source_pt=source_pt,
                                         destination_pt=destination_pt,
@@ -167,9 +222,12 @@ def book_cab():
                                         time_of_travel=time_of_travel
                                         )
     seats_remaining=int(request.vars.seats_available) - int(seats_required)
+<<<<<<< HEAD
     row = db(db.share_cab_details.id==int(travel_id)).select().first()
     row.update_record(seats_available=seats_remaining)
     
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
     return locals()
 
 

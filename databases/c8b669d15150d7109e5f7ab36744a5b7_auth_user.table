@@ -38,7 +38,11 @@ sg9
 I00
 sg10
 g11
+<<<<<<< HEAD
 ssS'dob'
+=======
+ssS'registration_id'
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 p15
 (dp16
 g4
@@ -46,6 +50,7 @@ I512
 sg5
 I00
 sg6
+<<<<<<< HEAD
 I11
 sg7
 S'DATE'
@@ -100,13 +105,24 @@ I8
 sg7
 S'CHAR(512)'
 p28
+=======
+I8
+sg7
+S'CHAR(512)'
+p17
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 g11
 ssS'email'
+<<<<<<< HEAD
 p29
 (dp30
+=======
+p18
+(dp19
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -115,6 +131,7 @@ sg6
 I4
 sg7
 S'CHAR(512)'
+<<<<<<< HEAD
 p31
 sg9
 I00
@@ -132,13 +149,21 @@ I9
 sg7
 S'CHAR(512)'
 p34
+=======
+p20
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 g11
 ssS'reset_password_key'
+<<<<<<< HEAD
 p35
 (dp36
+=======
+p21
+(dp22
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -147,6 +172,7 @@ sg6
 I7
 sg7
 S'CHAR(512)'
+<<<<<<< HEAD
 p37
 sg9
 I00
@@ -164,13 +190,21 @@ I10
 sg7
 S'CHAR(512)'
 p40
+=======
+p23
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 g11
 ssS'password'
+<<<<<<< HEAD
 p41
 (dp42
+=======
+p24
+(dp25
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -179,6 +213,7 @@ sg6
 I5
 sg7
 S'CHAR(512)'
+<<<<<<< HEAD
 p43
 sg9
 I00
@@ -188,6 +223,16 @@ p44
 ssS'registration_key'
 p45
 (dp46
+=======
+p26
+sg9
+I00
+sg10
+g24
+ssS'registration_key'
+p27
+(dp28
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -196,14 +241,23 @@ sg6
 I6
 sg7
 S'CHAR(512)'
+<<<<<<< HEAD
 p47
+=======
+p29
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 g11
 ssS'id'
+<<<<<<< HEAD
 p48
 (dp49
+=======
+p30
+(dp31
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -212,10 +266,18 @@ sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
+<<<<<<< HEAD
 p50
 sg9
 I00
 sg10
 S'id'
 p51
+=======
+p32
+sg9
+I00
+sg10
+g30
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 ss.

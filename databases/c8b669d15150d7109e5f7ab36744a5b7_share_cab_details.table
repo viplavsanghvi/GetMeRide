@@ -88,7 +88,11 @@ I00
 sg10
 S'date'
 p25
+<<<<<<< HEAD
 ssS'id'
+=======
+ssS'destination_pt'
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 p26
 (dp27
 g4
@@ -96,18 +100,31 @@ I512
 sg5
 I00
 sg6
+<<<<<<< HEAD
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
+=======
+I4
+sg7
+S'CHAR(512)'
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 p28
 sg9
 I00
 sg10
+<<<<<<< HEAD
 S'id'
 p29
 ssS'path_btw'
 p30
 (dp31
+=======
+g11
+ssS'path_btw'
+p29
+(dp30
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -116,15 +133,26 @@ sg6
 I10
 sg7
 S'TEXT'
+<<<<<<< HEAD
 p32
+=======
+p31
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 S'list:string'
+<<<<<<< HEAD
 p33
 ssS'preference'
 p34
 (dp35
+=======
+p32
+ssS'preference'
+p33
+(dp34
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -133,14 +161,23 @@ sg6
 I9
 sg7
 S'CHAR(512)'
+<<<<<<< HEAD
 p36
+=======
+p35
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 g11
 ssS'seats_available'
+<<<<<<< HEAD
 p37
 (dp38
+=======
+p36
+(dp37
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
@@ -149,20 +186,32 @@ sg6
 I8
 sg7
 S'INTEGER'
+<<<<<<< HEAD
 p39
+=======
+p38
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 sg9
 I00
 sg10
 S'integer'
+<<<<<<< HEAD
 p40
 ssS'destination_pt'
 p41
 (dp42
+=======
+p39
+ssS'id'
+p40
+(dp41
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 g4
 I512
 sg5
 I00
 sg6
+<<<<<<< HEAD
 I4
 sg7
 S'CHAR(512)'
@@ -171,6 +220,17 @@ sg9
 I00
 sg10
 g11
+=======
+I1
+sg7
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p42
+sg9
+I00
+sg10
+S'id'
+p43
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 ssS'prefrence'
 p44
 (dp45

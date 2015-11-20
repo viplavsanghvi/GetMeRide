@@ -176,6 +176,7 @@
 [2015-11-15 00:27:45] EDIT GetMeRide/controllers/default.py: 1
 [2015-11-15 00:28:35] EDIT GetMeRide/views/default/book_cab.html: 1
 [2015-11-15 00:31:09] EDIT GetMeRide/controllers/default.py: 2
+<<<<<<< HEAD
 [2015-11-15 19:32:27] EDIT GetMeRide/models/db.py: 6
 [2015-11-15 19:32:52] EDIT GetMeRide/models/db.py: 0
 [2015-11-15 19:34:14] EDIT GetMeRide/models/db.py: 0
@@ -252,3 +253,5 @@
 [2015-11-16 03:08:01] EDIT GetMeRide/views/default/search_cab_details.html: 0
 [2015-11-16 03:08:33] EDIT GetMeRide/views/default/search_cab_details.html: 0
 [2015-11-16 03:11:40] EDIT GetMeRide/views/default/search_cab_details.html: 0
+=======
+>>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
