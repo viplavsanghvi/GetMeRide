@@ -1,0 +1,40 @@
+{{extend 'layout.html'}}
+
+<h1>Booking Successfull, below are details</h1>
+<br/>
+<table>
+    <tr>
+        <td>Owner mail id :</td>
+        <td>{{=user_email}}</td>
+    </tr>
+    <tr>
+        <td>Car owner contact number : </td>
+        <td>{{=contact_no}}</td>
+    </tr>
+    <tr>
+        <td>Pick-up point: </td>
+        <td>{{=source_pt}}</td>
+    </tr>
+    <tr>
+        <td>Destination point : </td>
+        <td>{{=destination_pt}}</td>
+    </tr>
+    <tr>
+        <td>Seats Booked :</td>
+        <td>{{=seats_booked}}</td>
+    </tr>
+    <tr>
+        <td>Date of travel : </td>
+        <td>{{=date_of_travel}}</td>
+    </tr>
+    <tr>
+        <td>Time of travel :</td>
+        <td>{{=time_of_travel}}</td>
+    </tr>
+    <tr>
+        <td>Fare :</td>
+        <td>{{=fare}} INR</td>
+    </tr>
+    <tr><td></td><td></td></tr>
+    
+</table>

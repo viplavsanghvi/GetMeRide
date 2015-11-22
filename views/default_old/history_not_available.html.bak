@@ -1,0 +1,3 @@
+{{extend 'layout.html'}}
+<h1>This is the default/history_not_available.html template</h1>
+{{=BEAUTIFY(response._vars)}}

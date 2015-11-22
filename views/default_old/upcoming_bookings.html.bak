@@ -1,0 +1,46 @@
+{{extend 'layout.html'}}
+<h1>Upcoming bookings</h1>
+<br/>
+<table border='1'>
+<tr>
+<th align='center'>Pick-up point</th>
+<th align='center'>Dropping point</th>
+<th align='center'>Seats booked</th>
+<th align='center'>Date of travel</th>
+<th align='center'>Time of travel</th>
+<th align='center'>Fare</th>
+<th align='center'>Option</th>
+
+</tr>
+{{for item in cabs_list:}}
+<tr>
+<td align='center'>{{=item.source_pt}}</td>
+<td align='center'>{{=item.destination_pt}}</td>
+<td align='center'>{{=item.seats_booked}}</td>
+<td align='center'>{{=item.date_of_travel}}</td>
+<td align='center'>{{=item.time_of_travel}}</td>
+<td align='center'>{{=item.fare}}</td>
+<td align='center'>
+    <input type="submit" id="click" value="Cancel"
+onclick = 'window.location="{{=URL('default', 'cancel_cab', vars={'travel_id':item.id,                                                                                                                         'source_pt':item.source_pt,                                                                                                                   'destination_pt':item.destination_pt,
+                                                                  'seats_booked':item.seats_booked,
+                                                                  'date_of_travel':item.date_of_travel,
+                                                                  'time_of_travel':item.time_of_travel,
+                                                                  'fare':item.fare})}}";'>
+
+            </td>
+
+</tr>
+{{pass}}
+</table>
+<!-- 
+id
+travel_id
+user_id
+source_pt
+destination_pt
+seats_booked
+date_of_travel
+time_of_travel
+fare
+status -->

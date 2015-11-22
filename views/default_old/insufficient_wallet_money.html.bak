@@ -1,0 +1,3 @@
+{{extend 'layout.html'}}
+<h1>This is the default/insufficient_wallet_money.html template</h1>
+{{=BEAUTIFY(response._vars)}}

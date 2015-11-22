@@ -1,3 +1,9 @@
 {{extend 'layout.html'}}
-<h1>This is the default/share_a_cab.html template</h1>
-{{=form_share_a_cab}}
+<h1>Share your cab details:</h1>
+<div class="flash alert alert-dismissable">{{=response.flash or ''}}</div>
+<link href="{{=URL('static','assets/css/app.css')}}" rel="stylesheet">
+    <link href="{{=URL('static','assets/css/bootstrap.css')}}" rel="stylesheet">
+
+<body style="background-color : #cecece;">
+  	{{=form_share_a_cab}}
+ </body>

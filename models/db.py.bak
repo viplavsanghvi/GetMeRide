@@ -58,16 +58,15 @@ service = Service()
 plugins = PluginManager()
 
 ## create all tables needed by auth if not custom tables
-<<<<<<< HEAD
 auth.settings.extra_fields['auth_user']=[
   Field('contact_no',requires=IS_NOT_EMPTY(error_message=auth.messages.is_empty)),
   Field('address','string',requires=IS_NOT_EMPTY(error_message=auth.messages.is_empty)),
+  Field('dob','date',requires=IS_NOT_EMPTY()),  
   Field('gender',requires=IS_IN_SET(['Male', 'Female'])),
-  Field('wallet_amount','integer',writable=False)]
+  Field('wallet_amount','integer',writable=False,default=0),
+  Field('is_admin','boolean',writable=False,default=False)]
 
 
-=======
->>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
 auth.define_tables(username=False, signature=False)
 db.define_table('routes',Field('source_pt','string'),
                 Field('destination_pt','string'),
@@ -80,9 +79,12 @@ db.define_table('share_cab_details',
                 Field('destination_pt','string'),
                 Field('date_of_travel','date'),
                 Field('time_of_travel','time'),
+                Field('vehicle_no','string'),
                 Field('type_of_car','string'),
                 Field('seats_available','integer'),
                 Field('preference','string'),
+                Field('status',requires=IS_IN_SET(['Successfull', 'Cancelled']),default='Successfull'),
+                Field('traffic_wt',requires=IS_IN_SET(['YES', 'NO']),default='NO'),
                 Field('path_btw','list:string'))
 
 db.define_table('shared_cab_details',
@@ -90,12 +92,16 @@ db.define_table('shared_cab_details',
                 Field('user_id','string'),
                 Field('source_pt','string'),
                 Field('destination_pt','string'),
-<<<<<<< HEAD
                 Field('seats_booked','integer'),
-=======
->>>>>>> 8c17d96631acda612391d7ce0fbf6394014a3db3
                 Field('date_of_travel','date'),
-                Field('time_of_travel','time'))
+                Field('time_of_travel','time'),
+                Field('fare','float'),
+                Field('status',requires=IS_IN_SET(['Successfull', 'Cancelled']),default='Successfull'))
+
+db.define_table('peak_time',
+                Field('from_time','time'),
+                Field('to_time','time'))
+
 ## configure email
 mail = auth.settings.mailer
 mail.settings.server = 'logging' if request.is_local else myconf.take('smtp.server')

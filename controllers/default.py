@@ -48,6 +48,8 @@ mail.settings.login = 'care.getmeride@gmail.com:reglodnsrjjtvnbo'
 
 @auth.requires_login()
 def add_routes():
+    if not auth.user.is_admin:
+          redirect(URL('index'))
     form_add_route=SQLFORM.factory(Field('source_pt',requires=IS_NOT_EMPTY()),
                                    Field('destination_pt',requires=IS_NOT_EMPTY()),
                                    Field('distance_between','double',requires=IS_NOT_EMPTY()),
@@ -61,11 +63,34 @@ def add_routes():
                              destination_pt=ip_destination_pt,
                              dist_btw=ip_dist_btw,
                              traffic=ip_traffic)
+        
+    mod_routes()
     return locals()
+
+@auth.requires_login()
+def mod_routes():
+    rows=db().select(db.routes.ALL)
+    for row in rows:
+        a=str(row.source_pt)
+        b=str(row.destination_pt)
+        c=float(row.dist_btw)
+        d=float(row.traffic)
+        e=c*d
+        unweighted_g.add_edge(a,b,weight=c)
+        weighted_g.add_edge(a,b,weight=e)
+        if locations.has_key(a)==False:
+            locations[a]=a
+            points.append(a)
+        if locations.has_key(b)==False:
+            locations[b]=b
+            points.append(b)
+
+
 
 #####################################################################
 ## share_a_cab() function allows a user to post details of cab to be shared
 #####################################################################
+
 @auth.requires_login()
 def share_a_cab():
     from datetime import datetime
@@ -143,6 +168,7 @@ def search_cab():
                                      Field('date_of_travel','date',requires=IS_NOT_EMPTY()),
                                      Field('time_of_travel','time',requires=IS_NOT_EMPTY())).process(onvalidation=form_processing)
     if form_search_cab.accepted:
+        session.coming_from='search_cab'
         redirect(URL('search_cab_details',vars={'source_pt':form_search_cab.vars.source_pt,
                                                'destination_pt':form_search_cab.vars.destination_pt,
                                                'seats_required':form_search_cab.vars.seats_required,
@@ -153,6 +179,8 @@ def search_cab():
 
 def form_processing(form):
     from datetime import datetime
+    if form.vars.source_pt == form.vars.destination_pt:
+        form.errors.destination_pt='Source and Destination can not be same'
     date_of_travel=form.vars.date_of_travel
     todays_date=str(request.now)
     todays_date=todays_date[:10]
@@ -161,7 +189,10 @@ def form_processing(form):
 
 @auth.requires_login()
 def search_cab_details():
+    
     from datetime import datetime
+    if session.coming_from != 'search_cab':
+        redirect(URL('search_cab'))
     g=nx.Graph()
     g=unweighted_g
     source_pt=request.vars.source_pt
@@ -175,6 +206,7 @@ def search_cab_details():
     cab_list=[]
     
 #     print todays_date
+    session.coming_from='search_cab_details'
     for row in rows:
         c=list(row.path_btw)
         
@@ -190,6 +222,9 @@ def search_cab_details():
 
 @auth.requires_login()
 def book_cab():
+    # if session.coming_from != 'search_cab_details':
+    #     redirect(URL('search_cab'))
+    # session.coming_from='book_cab'
     travel_id=request.vars.travel_id
     ip_fare=request.vars.fare
     source_pt=request.vars.source_pt
@@ -333,6 +368,8 @@ def insufficient_wallet_money():
 
 @auth.requires_login()
 def booking_successful():
+    # if session.coming_from != 'book_cab':
+    #     redirect(URL('search_cab'))
     user_email=request.vars.user_email
     source_pt=request.vars.source_pt
     destination_pt=request.vars.destination_pt
@@ -368,6 +405,7 @@ def booking_successful():
     msg2= msg2 + 'Time of travel :'+ time_of_travel +'\n'
     msg2= msg2 + 'Fare :'+ fare + ' INR \n'
     msg2= msg2 + 'Happy Sharing smile emoticon'
+    mail.send(user_email,'Booking confirmation',msg2)
     return locals()
 
 @auth.requires_login()
@@ -434,6 +472,13 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
+    try:
+        if auth.user.is_admin:
+            session.adminhere = 1
+            redirect(URL('share_a_cab'))
+    except Exception:
+        # print ""
+        session.adminhere1=1
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
 

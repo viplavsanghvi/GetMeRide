@@ -63,7 +63,8 @@ auth.settings.extra_fields['auth_user']=[
   Field('address','string',requires=IS_NOT_EMPTY(error_message=auth.messages.is_empty)),
   Field('dob','date',requires=IS_NOT_EMPTY()),  
   Field('gender',requires=IS_IN_SET(['Male', 'Female'])),
-  Field('wallet_amount','integer',writable=False,default=0)]
+  Field('wallet_amount','integer',writable=False,default=0),
+  Field('is_admin','boolean',writable=False,default=False)]
 
 
 auth.define_tables(username=False, signature=False)

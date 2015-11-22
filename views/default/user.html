@@ -16,8 +16,9 @@
                 form.add_button(T('Lost Password'),URL(args='request_reset_password'),_class='btn btn-default')
             pass
         elif request.args(0) == 'profile':
-            form.add_button(T('View Previous Booking'),URL('default','previous_bookings'),_class='btn btn-default btn-primary')
-            form.add_button(T('View Upcoming Bookings'),URL('default','upcoming_bookings'),_class='btn btn-default btn-primary')
+            form.add_button(T('Previous Bookings'),URL('default','previous_bookings'),_class='btn btn-default btn-primary')
+            form.add_button(T('Upcoming Bookings'),URL('default','upcoming_bookings'),_class='btn btn-default btn-primary')
+            form.add_button(T('Add Money'),URL('default','add_money'),_class='btn btn-default btn-primary')
         pass
         =form
         }}

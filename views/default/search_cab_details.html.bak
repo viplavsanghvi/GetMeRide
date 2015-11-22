@@ -24,20 +24,13 @@
 <td align='center'>{{=item.seats_available}}</td>
 <td align='center'>{{=item.preference}}</td>
 <td align='center'>{{=distance_btw}}</td>
-{{if item.traffic_wt=='YES':}}
-<td align='center' style="color:orange;">{{=fare*2}}</td>
-{{fare1=fare*2}}
-{{else:}}
-<td align='center' style="color:green;">{{=fare}}</td>
-{{fare1=fare}}
-{{pass}}
+<td align='center'>{{=fare}}</td>
 <td align='center'>
     <input type="submit" id="click" value="Book"
 onclick = 'window.location="{{=URL('default', 'book_cab', vars={'travel_id':item.id,                                                                                                                         'source_pt':source_pt,                                                                                                                       'destination_pt':destination_pt,
                                                                 'seats_required':seats_required,
                                                                 'date_of_travel':date_of_travel,
-                                                                'time_of_travel':time_of_travel,          
-                                                                'fare':fare,
+                                                                'time_of_travel':time_of_travel,
                                                                 'seats_available':item.seats_available})}}";'>
 
             </td>

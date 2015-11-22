@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+<h2>
+Please confirm the booking    
+</h2>
+<p></p>
+{{=form_book_cab}}
